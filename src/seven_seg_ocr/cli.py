@@ -1,5 +1,7 @@
 """Command-line interface for seven-seg-ocr."""
 
+from __future__ import annotations
+
 import json
 import sys
 

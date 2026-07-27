@@ -6,6 +6,8 @@ in the horizontal brightness gradient. No ML, no tuning required
 — works on blurry images where brightness-based thresholding fails.
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 

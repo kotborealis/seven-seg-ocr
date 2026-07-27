@@ -11,6 +11,8 @@ Usage::
     print(result["reading"])  # "2.2"
 """
 
+from __future__ import annotations
+
 from seven_seg_ocr.classifier import classify, extract_zones
 from seven_seg_ocr.detector import detect_y, find_digits, is_dot
 from seven_seg_ocr.reader import read_display
