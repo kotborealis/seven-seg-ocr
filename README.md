@@ -1,8 +1,23 @@
 # seven-seg-ocr
 
-**Blur-robust OCR for 7-segment LED/LCD displays.**
+**Blur-robust OCR for 7-segment LED/LCD displays — reading digits and error codes from water pressure relay cameras.**
 
 No machine learning. No GPU. Pure NumPy + OpenCV image processing that works on blurry, low-resolution photos where Tesseract and template matching fail.
+
+Built for reading values from a water pressure relay's 7-segment display captured through a monitoring camera — handles blur, uneven brightness, and mild skew typical of real-world snapshots.
+
+## Example
+
+A 101×101 px photo from the relay camera:
+
+![Test image: 2.2](tests/fixtures/test_2_2.jpg)
+
+```bash
+$ seven-seg-ocr tests/fixtures/test_2_2.jpg
+Reading:  2.2
+Format:  D.D
+Confidence: 0.939
+```
 
 ## How It Works
 
@@ -20,7 +35,7 @@ pip install seven-seg-ocr
 Or from source:
 
 ```bash
-git clone https://github.com/user/seven-seg-ocr.git
+git clone https://github.com/kotborealis/seven-seg-ocr.git
 cd seven-seg-ocr
 pip install -e ".[dev]"
 ```
