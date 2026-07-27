@@ -293,9 +293,7 @@ def classify(
         enorm = np.linalg.norm(exp_c)
 
         corr = (
-            float(np.dot(obs_c, exp_c) / (onorm * enorm))
-            if onorm > 1e-6 and enorm > 1e-6
-            else 0.0
+            float(np.dot(obs_c, exp_c) / (onorm * enorm)) if onorm > 1e-6 and enorm > 1e-6 else 0.0
         )
 
         # ── Rule-based boost/penalty ────────────────────────────────
