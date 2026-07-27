@@ -17,6 +17,8 @@ The 3×3 grid maps to 7-segment geometry:
                        g = MC (middle horizontal)
 """
 
+from __future__ import annotations
+
 import numpy as np
 
 # ── 3×3 Zone Signatures ──────────────────────────────────────────
