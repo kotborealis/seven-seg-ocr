@@ -305,7 +305,7 @@ def classify(
         bc_bright = vals[7] > 0.6
         tr_bright = vals[2] > 0.6
         tl_dark = vals[0] < 0.35
-        bl_bright = vals[6] > 0.6
+        bl_bright = vals[6] > 0.65  # stricter: avoid penalizing '9' with mild bloom
 
         if bc_bright and exp_raw[7] < 0.3:
             boost -= 0.7
@@ -319,6 +319,15 @@ def classify(
 
         if tl_dark and exp_raw[0] > 0.5:
             boost -= 0.3
+        # TL bright rules out digits with TL dark (e.g., "2")
+        if vals[0] > 0.5 and exp_raw[0] < 0.2:
+            boost -= 0.7
+
+        # MC = middle center (g). Key for "0" vs "6"/"8".
+        if vals[4] < 0.3 and exp_raw[4] > 0.5:
+            boost -= 0.4  # MC dark but sig expects bright
+        if vals[4] > 0.6 and exp_raw[4] < 0.2:
+            boost -= 0.9  # MC bright but sig expects dark (e.g., "0")
 
         if bl_bright and exp_raw[6] < 0.2:
             boost -= 0.5
