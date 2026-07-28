@@ -9,12 +9,11 @@ def _make_test_image(width=200, height=100):
     """Create a synthetic 2-digit display image."""
     img = np.zeros((height, width), dtype=np.float32)
 
-    # Two bright digit regions
-    # Digit 1: x=50..70, y=30..70
-    img[30:71, 50:71] = 0.8
-    # Gap
-    # Digit 2: x=85..105, y=30..70
-    img[30:71, 85:106] = 0.8
+    # Two narrow bright digit regions (each ~14px wide to match detector)
+    # Digit 1: x=50..65, y=30..70
+    img[30:71, 50:66] = 0.8
+    # Digit 2: x=85..100, y=30..70
+    img[30:71, 85:101] = 0.8
 
     # Add slight gradient for realism
     img += np.random.normal(0, 0.02, img.shape).astype(np.float32)
